@@ -1,23 +1,30 @@
+import autoprefixer from "autoprefixer";
+import postcssFlexbugsFixes from "postcss-flexbugs-fixes";
+import postcssImport from "postcss-import";
+import postcssNested from "postcss-nested";
+import postcssPresetEnv from "postcss-preset-env";
+import postcssSimpleVars from "postcss-simple-vars";
+import tailwindcss from "tailwindcss";
+
 export default {
   plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
+    tailwindcss,
+    autoprefixer,
     "postcss-preset-env": {
       stage: 1,
     },
     postcss: {
       plugins: [
-        require("postcss-import"),
-        require("tailwindcss"),
-        require("autoprefixer"),
-        require("postcss-nested"),
-        require("postcss-simple-vars"),
-        require("postcss-flexbugs-fixes"),
-        require("postcss-preset-env")({
+        postcssImport,
+        tailwindcss,
+        autoprefixer,
+        postcssNested,
+        postcssSimpleVars,
+        postcssFlexbugsFixes,
+        postcssPresetEnv({
           stage: 3,
         }),
-        require("autoprefixer"),
-        require("sass")({}),
+        autoprefixer,
       ],
     },
   },
